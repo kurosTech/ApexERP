@@ -1,0 +1,248 @@
+{
+  "entities": {
+    "Company": {
+      "title": "Company",
+      "description": "Company profile and localization settings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "tradingName": { "type": "string" },
+        "tin": { "type": "string" },
+        "currency": { "type": "string" },
+        "currencySymbol": { "type": "string" },
+        "timezone": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "address": { "type": "string" },
+        "taxRate": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "currency"]
+    },
+    "User": {
+      "title": "User",
+      "description": "ERP user with role-based access",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string" },
+        "branchId": { "type": "string" },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "email", "role"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Inventory product with pricing and stock levels",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "sku": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "unit": { "type": "string" },
+        "costPrice": { "type": "number" },
+        "sellingPrice": { "type": "number" },
+        "wholesalePrice": { "type": "number" },
+        "minStock": { "type": "number" },
+        "currentStock": { "type": "number" },
+        "taxCategory": { "type": "string" },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "sku", "name", "costPrice", "sellingPrice"]
+    },
+    "StockMovement": {
+      "title": "StockMovement",
+      "description": "Traceable inventory movement record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "productId": { "type": "string" },
+        "productName": { "type": "string" },
+        "warehouseId": { "type": "string" },
+        "type": { "type": "string" },
+        "quantity": { "type": "number" },
+        "unitCost": { "type": "number" },
+        "totalCost": { "type": "number" },
+        "reference": { "type": "string" },
+        "source": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "createdBy": { "type": "string" }
+      },
+      "required": ["id", "productId", "warehouseId", "type", "quantity"]
+    },
+    "Customer": {
+      "title": "Customer",
+      "description": "Customer record with credit limit and balance",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "address": { "type": "string" },
+        "tin": { "type": "string" },
+        "creditLimit": { "type": "number" },
+        "currentBalance": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    },
+    "Invoice": {
+      "title": "Invoice",
+      "description": "Sales invoice with line items and accounting link",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "invoiceNumber": { "type": "string" },
+        "customerId": { "type": "string" },
+        "customerName": { "type": "string" },
+        "warehouseId": { "type": "string" },
+        "status": { "type": "string" },
+        "paymentStatus": { "type": "string" },
+        "issueDate": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "subtotal": { "type": "number" },
+        "taxAmount": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "amountPaid": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "invoiceNumber", "customerId", "totalAmount"]
+    },
+    "Supplier": {
+      "title": "Supplier",
+      "description": "Vendor or supplier record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "contactPerson": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "tin": { "type": "string" },
+        "currentBalance": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    },
+    "PurchaseOrder": {
+      "title": "PurchaseOrder",
+      "description": "Purchasing order for inventory restocking",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "poNumber": { "type": "string" },
+        "supplierId": { "type": "string" },
+        "supplierName": { "type": "string" },
+        "warehouseId": { "type": "string" },
+        "status": { "type": "string" },
+        "totalAmount": { "type": "number" },
+        "orderDate": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "poNumber", "supplierId", "totalAmount"]
+    },
+    "Account": {
+      "title": "Account",
+      "description": "Chart of accounts general ledger account",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "category": { "type": "string" },
+        "balance": { "type": "number" },
+        "currency": { "type": "string" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["id", "code", "name", "type"]
+    },
+    "JournalEntry": {
+      "title": "JournalEntry",
+      "description": "Balanced double-entry journal transaction",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "entryNumber": { "type": "string" },
+        "date": { "type": "string" },
+        "description": { "type": "string" },
+        "reference": { "type": "string" },
+        "totalDebit": { "type": "number" },
+        "totalCredit": { "type": "number" },
+        "posted": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "entryNumber", "date", "totalDebit", "totalCredit"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "System event audit trail record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "action": { "type": "string" },
+        "module": { "type": "string" },
+        "entityId": { "type": "string" },
+        "description": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "action", "module", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/companies/{companyId}": {
+      "schema": "Company",
+      "description": "Company settings and master configurations"
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "ERP users with roles and branch assignments"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Inventory product catalog"
+    },
+    "/stockMovements/{movementId}": {
+      "schema": "StockMovement",
+      "description": "Inventory ledger of receipts, deliveries, and adjustments"
+    },
+    "/customers/{customerId}": {
+      "schema": "Customer",
+      "description": "Customer accounts and balances"
+    },
+    "/invoices/{invoiceId}": {
+      "schema": "Invoice",
+      "description": "Sales invoices"
+    },
+    "/suppliers/{supplierId}": {
+      "schema": "Supplier",
+      "description": "Supplier accounts and vendor directory"
+    },
+    "/purchaseOrders/{poId}": {
+      "schema": "PurchaseOrder",
+      "description": "Purchase orders and goods receipt status"
+    },
+    "/accounts/{accountId}": {
+      "schema": "Account",
+      "description": "Chart of Accounts"
+    },
+    "/journalEntries/{entryId}": {
+      "schema": "JournalEntry",
+      "description": "General ledger balanced double-entry journals"
+    },
+    "/auditLogs/{logId}": {
+      "schema": "AuditLog",
+      "description": "Immutable business transaction audit log"
+    }
+  }
+}

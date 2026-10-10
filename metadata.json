@@ -1,0 +1,6 @@
+{
+  "name": "ApexERP - Enterprise Business Management System",
+  "description": "Comprehensive modular ERP web application for trading, retail, and wholesale business operations including inventory, sales, purchasing, double-entry accounting, and financial reporting.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
